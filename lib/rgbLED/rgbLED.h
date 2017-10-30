@@ -2,6 +2,7 @@
 
 #include <SoftPWM.h>
 
+// our rgb LED class
 class rgbLED {
 private:
 	unsigned int _pinred;
@@ -45,4 +46,33 @@ public:
 				break;
 		}
 	}
+
+	void singleon(char colour) {
+		switch (colour) {
+			case 'r':
+				digitalWrite(_pinred, HIGH);
+				break;
+			case 'g':
+				digitalWrite(_pingreen, HIGH);
+				break;
+			case 'b':
+				digitalWrite(_pinblue, HIGH);
+				break;
+		}
+	}
+
+	void singleoff(char colour) {
+		switch (colour) {
+			case 'r':
+				digitalWrite(_pinred, LOW);
+				break;
+			case 'g':
+				digitalWrite(_pingreen, LOW);
+				break;
+			case 'b':
+				digitalWrite(_pinblue, LOW);
+				break;
+		}
+	}
+
 };
