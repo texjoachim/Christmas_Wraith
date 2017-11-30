@@ -17,10 +17,34 @@ void setup() {
 	pinMode(A2, INPUT); // use a cable between GND and A1-A4
 	pinMode(A3, INPUT);
 	pinMode(A4, INPUT);
+	pinMode(A5, INPUT);
 	digitalWrite(A1, INPUT_PULLUP);
 	digitalWrite(A2, INPUT_PULLUP);
 	digitalWrite(A3, INPUT_PULLUP);
 	digitalWrite(A4, INPUT_PULLUP);
+	digitalWrite(A5, INPUT_PULLUP);
+}
+
+void test_cables() { // for testing purposes (aka are all cables correct?)
+	while(true) {
+	for(unsigned int i = 0; i < 4; i++) {
+		
+		candle[i].singleon(r);
+		delay(500);
+		candle[i].singleoff(r);
+		delay(500);
+
+		candle[i].singleon(g);
+		delay(500);
+		candle[i].singleoff(g);
+		delay(500);
+
+		candle[i].singleon(b);
+		delay(500);
+		candle[i].singleoff(b);
+		delay(500);
+		}
+		}
 }
 
 void loop() {
@@ -36,28 +60,15 @@ void loop() {
 		maxCandles = 3;
 	} else if (digitalRead(A4) == LOW) {
 		maxCandles = 4;
+	} else if (digitalRead(A5) == LOW) {
+		maxCandles = 0;
+		test_cables();
 	}
 
 	for(unsigned int i = 0; i < maxCandles; i++) {
 		candle[i].on(r, random(10, 50)+30);
 		candle[i].on(g, random(10, 25));
 		candle[i].on(b, random(10));
-
-	// for testing purposes (aka are all cables correct?)
-	// candle[i].singleon(r);
-	// delay(500);
-	// candle[i].singleoff(r);
-	// delay(500);
-
-	// candle[i].singleon(g);
-	// delay(500);
-	// candle[i].singleoff(g);
-	// delay(500);
-
-	// candle[i].singleon(b);
-	// delay(500);
-	// candle[i].singleoff(b);
-	// delay(500);
 		}
 
 	delay(350);
