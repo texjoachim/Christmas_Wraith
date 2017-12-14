@@ -75,4 +75,9 @@ public:
 		}
 	}
 
+	void out() {
+		digitalWrite(_pinred, LOW);
+		digitalWrite(_pingreen, LOW);
+		digitalWrite(_pinblue, LOW);
+	}
 };
