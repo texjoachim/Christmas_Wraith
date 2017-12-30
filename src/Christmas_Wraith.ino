@@ -29,19 +29,19 @@ void test_cables() { // for testing purposes (aka are all cables correct?)
 	while(true) {
 	for(unsigned int i = 0; i < 4; i++) {
 		
-		candle[i].singleon(r);
+		candle[i].on(r);
 		delay(500);
-		candle[i].singleoff(r);
-		delay(500);
-
-		candle[i].singleon(g);
-		delay(500);
-		candle[i].singleoff(g);
+		candle[i].off(r);
 		delay(500);
 
-		candle[i].singleon(b);
+		candle[i].on(g);
 		delay(500);
-		candle[i].singleoff(b);
+		candle[i].off(g);
+		delay(500);
+
+		candle[i].on(b);
+		delay(500);
+		candle[i].off(b);
 		delay(500);
 		}
 		}
@@ -66,9 +66,9 @@ void loop() {
 	}
 
 	for(unsigned int i = 0; i < maxCandles; i++) {
-		candle[i].on(r, random(10, 50)+30);
-		candle[i].on(g, random(10, 25));
-		candle[i].on(b, random(10));
+		candle[i].flicker(r, random(10, 50)+30);
+		candle[i].flicker(g, random(10, 25));
+		candle[i].flicker(b, random(10));
 		}
 
 	delay(350);
